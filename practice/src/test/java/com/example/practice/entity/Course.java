@@ -33,7 +33,7 @@ public class Course {
 
     private Double duration;
 
-    Course(String prof, String courseName, BigDecimal price, double duration) {
+    public Course(String prof, String courseName, BigDecimal price, Double duration) {
         this.courseName = courseName;
         this.prof = prof;
         this.price = price;

@@ -6,20 +6,17 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.NonNull;
 
-public class CourseRequest {
-    @Id
-    Long courseId;
+public record CourseRequest(
+        @Id Long courseId,
 
-    @NotBlank
-    String courseName;
+        @NotBlank(message = "Enter a course name") String courseName,
 
-    String prof;
+        String prof,
 
-    @NotBlank
-    BigDecimal price;
+        @NotNull(message = "Enter a suiatble price") BigDecimal price,
 
-    @NotBlank
-    BigDecimal duration;
+        @NotNull(message = "Allocate proper duration") Double duration) {
 }
