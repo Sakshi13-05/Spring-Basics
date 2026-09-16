@@ -8,7 +8,11 @@ import org.springframework.context.annotation.Bean;
 import com.example.practice.model.Product;
 import com.example.practice.repository.ProductRepo;
 
+import lombok.Data;
+import lombok.ToString;
+
 @SpringBootApplication
+
 public class PracticeApplication {
 
 	public static void main(String[] args) {
@@ -16,13 +20,17 @@ public class PracticeApplication {
 	}
 
 	@Bean
+
 	public CommandLineRunner demo(ProductRepo repo) {
 		return (args) -> {
 			repo.save(new Product("shampoo", 100.0, 15));
+			repo.save(new Product("soap", 100.0, 156));
 			System.out.println("The database content are:");
-			for (Product pdt : repo.findAll()) {
-				System.out.println(pdt.getName() + " -->" + pdt.getPrice());
-			}
+			System.out.println(repo.getPdtByName("shampoo").get());
+			// for (Product pdt : repo.findAll()) {
+			// System.out.println(pdt.getId() + " " + pdt.getName() + " -->" +
+			// pdt.getPrice());
+			// }
 		};
 	}
 
