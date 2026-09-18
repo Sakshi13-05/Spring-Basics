@@ -17,13 +17,13 @@ public class Product {
     @Id
     @GeneratedValue
     private Long pdt_id;
-    private String pdt_name;
+    private String pdtName;
     private double price;
     private Integer quantity;
 
     // if not value is not added to db
-    public Product(String pdt_name, double price, Integer quantity) {
-        this.pdt_name = pdt_name;
+    public Product(String pdtName, double price, Integer quantity) {
+        this.pdtName = pdtName;
         this.price = price;
         this.quantity = quantity;
     }

@@ -22,7 +22,7 @@ public class ProductService {
     }
 
     public Optional<Product> getByName(String pdt_name) {
-        return (repo.getByPdt_name(pdt_name));
+        return (repo.getByPdtName(pdt_name));
     }
 
     public Optional<Product> getById(Long id) {
