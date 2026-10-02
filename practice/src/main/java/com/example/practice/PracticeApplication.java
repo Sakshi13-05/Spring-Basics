@@ -4,11 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 
-import com.example.practice.service.EmailMessageSender;
-import com.example.practice.service.MessageSender;
-import com.example.practice.service.OrderNotificationService;
+import com.example.practice.domain.OrderProcessingService;
 
 @SpringBootApplication
 public class PracticeApplication {
@@ -17,10 +14,14 @@ public class PracticeApplication {
 		SpringApplication.run(PracticeApplication.class, args);
 	}
 
+	// Automatically runs after the Spring context is loaded
 	@Bean
-	public CommandLineRunner commandLineRunner(OrderNotificationService notificationService) {
+	public CommandLineRunner initializeInventory(OrderProcessingService orderService) {
 		return args -> {
-			notificationService.notifyCustomer("ORD-1001", "user@example.com");
+			System.out.println("Initializing inventory data...");
+			orderService.fillStock();
+			orderService.placeOrder("123", "Shampoo", 12000.0);
+			System.out.println("Store is open for orders!");
 		};
 	}
 }
